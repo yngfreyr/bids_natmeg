@@ -52,9 +52,17 @@ filterForm: FormGroup;
       {
         column1: 'CogPOID',
         column2: 'RECOMMENDED',
-        column3: 'array of strings',
-        key: "EthicsApprovals",
-        title: "List of ethics committee approvals of the research protocols and/or protocol identifiers.",
+        column3: 'string',
+        key: "CogPOID",
+        title: "URI of the corresponding CogPO term.",
+        type: "text"
+      },
+      {
+        column1: 'SubjectArtefactDescription',
+        column2: 'RECOMMENDED',
+        column3: 'string',
+        key: "SubjectArtefactDescription",
+        title: 'Freeform description of the observed subject artefact and its possible cause (for example, "Vagus Nerve Stimulator", "non-removable implant"). If this field is set to "n/a", it will be interpreted as absence of major source of artifacts except cardiac and blinks.',
         type: "text"
       },
       {
@@ -74,19 +82,11 @@ filterForm: FormGroup;
         type: "text"
       },
       {
-        column1: 'RecordingDuration',
+        column1: 'EpochLength',
         column2: 'RECOMMENDED',
         column3: 'number',
-        key: "RecordingDuration",
-        title: "Length of the recording in seconds (for example, 3600).",
-        type: "text"
-      },
-      {
-        column1: 'SamplingFrequency',
-        column2: 'REQUIRED',
-        column3: 'number',
-        key: "SamplingFrequency",
-        title: "Sampling frequency (in Hz) of all the data in the recording, regardless of their type (for example, 2400). The sampling frequency of data channels that deviate from the main sampling frequency SHOULD be specified in the channels.tsv file.",
+        key: "EpochLength",
+        title: "Duration of individual epochs in seconds (for example, 1) in case of epoched data. If recording was continuous or discontinuous, leave out the field.Must be a number greater than or equal to 0.",
         type: "text"
       },
       {
@@ -95,14 +95,6 @@ filterForm: FormGroup;
         column3: 'number or "n/a"',
         key: "PowerLineFrequency",
         title: "Frequency (in Hz) of the power grid at the geographical location of the instrument (for example, 50 or 60).",
-        type: "text"
-      },
-      {
-        column1: 'EpochLength',
-        column2: 'RECOMMENDED',
-        column3: 'number',
-        key: "EpochLength",
-        title: "Duration of individual epochs in seconds (for example, 1) in case of epoched data. If recording was continuous or discontinuous, leave out the field.Must be a number greater than or equal to 0.",
         type: "text"
       },
       {
@@ -146,14 +138,6 @@ filterForm: FormGroup;
         type: "text"
       },
       {
-        column1: 'SubjectArtefactDescription',
-        column2: 'RECOMMENDED',
-        column3: 'string',
-        key: "SubjectArtefactDescription",
-        title: 'Freeform description of the observed subject artefact and its possible cause (for example, "Vagus Nerve Stimulator", "non-removable implant"). If this field is set to "n/a", it will be interpreted as absence of major source of artifacts except cardiac and blinks.',
-        type: "text"
-      },
-      {
         column1: 'SoftwareFilters',
         column2: 'REQUIRED',
         column3: 'object of objects or "n/a"',
@@ -167,14 +151,6 @@ filterForm: FormGroup;
         column3: 'object of objects or "n/a"',
         key: "HardwareFilters",
         title: 'Object of temporal hardware filters applied, or "n/a" if the data is not available. Each key-value pair in the JSON object is a name of the filter and an object in which its parameters are defined as key-value pairs. For example, {"Highpass RC filter": {"Half amplitude cutoff (Hz)": 0.0159, "Roll-off": "6dB/Octave"}}.',
-        type: "text"
-      },
-      {
-        column1: 'AssociatedEmptyRoom',
-        column2: 'RECOMMENDED',
-        column3: 'array or string',
-        key: "AssociatedEmptyRoom",
-        title: "One or more BIDS URIs pointing to empty-room file(s) associated with the subject's MEG recording. Using forward-slash separated paths relative to the dataset root is DEPRECATED",
         type: "text"
       },
    ];
